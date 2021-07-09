@@ -1,7 +1,7 @@
 let eyeCursor = document.querySelector("#eyeCursor");
 
 let avgPoints = [];
-
+ 
 webgazer.showVideo(false);
 webgazer.showPredictionPoints(false)
 // webgazer.setRegression("threadedRidge"); //Use threaded ridge for better perfomance (mobile, etc) also, usually better performance means better accuracy
