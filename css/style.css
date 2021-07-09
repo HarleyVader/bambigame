@@ -5,6 +5,11 @@
    width: 100%;
    text-align: center;
 }  
+
+#eyeCursor {
+   position: absolute;
+}
+
 .alert {
     /* position: absolute; */  
     padding: 20px;     
