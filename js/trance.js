@@ -34,3 +34,27 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
 }).begin();
 
 //TODO: calibration, use webgazer.pause and webgazer.resume to stop and start user interaction data collection
+
+
+//UTILITIES
+function alertBox(msg) {
+    zz = document.createElement("div");
+    zz.className = "alert";
+    zz.innerHTML = `<span class="closebtn">&times;</span>` + msg + ``;
+    document.querySelector("#alertBoxs").appendChild(zz);
+
+    zz.onclick = function () {
+        div = zz;
+        div.style.opacity = "0";
+        setTimeout(function () {
+            div.style.display = "none";
+        }, 600);
+    }
+    setTimeout(function (that) {
+        var div = that;
+        div.style.opacity = "0";
+        setTimeout(function () {
+            div.style.display = "none";
+        }, 600);
+    }, 3000, zz);
+}
