@@ -12,10 +12,16 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
     avgPoints.push([data.x,data.y]);
     if(avgPoints.length>20){avgPoints.pop()}
       
-    let sumX = avgPoints.reduce((a, b) => a[0] + b[0]); // Use fancy array stuff
-    let sumY = avgPoints.reduce((a, b) => a[1] + b[1]);
-    let xPred = (sumX / avgPoints.length) || 0;
-    let yPred = (sumY / avgPoints.length) || 0;
+    let sumX = 0;
+    for(let i=0;i<avgPoints.length;i++){
+        sumX+=avgPoints[i][0];
+    }
+    let sumY = 0;
+    for(let j=0;j<avgPoints.length;j++){
+        sumY+=avgPoints[i][1];
+    }
+    let xPred = (sumX / avgPoints.length);
+    let yPred = (sumY / avgPoints.length);
     eyeCursor.style.left = xPred+"px";
     eyeCursor.style.top = yPred+"px";
 //     console.log(data);
