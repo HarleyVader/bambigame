@@ -24,7 +24,7 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
     let yPred = (sumY / avgPoints.length);
     eyeCursor.style.left = xPred+"px";
     eyeCursor.style.top = yPred+"px";
-//     console.log(data);
+    console.log(xPred,yPred);
 }).begin();
 
 //TODO: calibration, use webgazer.pause and webgazer.resume to stop and start user interaction data collection
