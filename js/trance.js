@@ -18,7 +18,7 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
     }
     let sumY = 0;
     for(let j=0;j<avgPoints.length;j++){
-        sumY+=avgPoints[i][1];
+        sumY+=avgPoints[j][1];
     }
     let xPred = (sumX / avgPoints.length);
     let yPred = (sumY / avgPoints.length);
