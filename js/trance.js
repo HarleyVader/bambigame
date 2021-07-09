@@ -4,7 +4,7 @@ let avgPoints = [];
  
 webgazer.showVideo(false);
 webgazer.showPredictionPoints(false)
-// webgazer.setRegression("threadedRidge"); //Use threaded ridge for better perfomance (mobile, etc) also, usually better performance means better accuracy
+webgazer.setRegression("weightedRidge"); //Prioritizes new user interactions!
 webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow function
     if (data == null) { 
         return;
