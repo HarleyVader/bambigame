@@ -5,12 +5,13 @@ let avgPoints = [];
 webgazer.showVideo(false);
 webgazer.showPredictionPoints(false)
 webgazer.setRegression("weightedRidge"); //Prioritizes new user interactions!
+webgazer.applyKalmanFilter(true); // Apply a kalman filter to better track eyes
 webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow function
     if (data == null) { 
         return;
     }
     avgPoints.push([data.x,data.y]);
-    if(avgPoints.length>20){avgPoints.shift()}
+    if(avgPoints.length>10){avgPoints.shift()} // Get the average prediction
       
     let sumX = 0;
     for(let i=0;i<avgPoints.length;i++){
