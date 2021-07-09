@@ -10,7 +10,7 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
         return;
     }
     avgPoints.push([data.x,data.y]);
-    if(avgPoints.length>20){avgPoints.pop()}
+    if(avgPoints.length>20){avgPoints.shift()}
       
     let sumX = 0;
     for(let i=0;i<avgPoints.length;i++){
