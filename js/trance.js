@@ -6,7 +6,7 @@ let first = true;
 webgazer.showVideo(false);
 webgazer.showPredictionPoints(false)
 webgazer.setRegression("weightedRidge"); //Prioritizes new user interactions!
-webgazer.applyKalmanFilter(true); // Apply a kalman filter to better track eyes
+webgazer.applyKalmanFilter(true); // Apply a kalman filter to better track eyes 
 webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow function
     if(first){
       first = false;
