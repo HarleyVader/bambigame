@@ -3,7 +3,7 @@ let eyeCursor = document.querySelector("#eyeCursor");
 let avgPoints = [];
 
 webgazer.showVideo(false);
-webgazer.setRegression("threadedRidge"); //Use threaded ridge for better perfomance (mobile, etc) also, usually better performance means better accuracy
+// webgazer.setRegression("threadedRidge"); //Use threaded ridge for better perfomance (mobile, etc) also, usually better performance means better accuracy
 webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow function
     if (data == null) {
         return;
@@ -17,7 +17,7 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
     let yPred = (sumY / avgPoints.length) || 0;
     eyeCursor.style.left = data.x;
     eyeCursor.style.top = data.y;
-    console.log(`${data}`);
+    console.log(data);
 }).begin();
 
 //TODO: calibration, use webgazer.pause and webgazer.resume to stop and start user interaction data collection
