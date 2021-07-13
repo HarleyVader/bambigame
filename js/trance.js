@@ -11,6 +11,7 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
     if(first){
       first = false;
       alertBox("Model Loaded! Click To Start");
+      setTimeout(startSession,3000);
     }
     if (data == null) { 
         return;
@@ -35,7 +36,12 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
 
 //TODO: calibration, use webgazer.pause and webgazer.resume to stop and start user interaction data collection
 
-
+// Trance code
+function startSession() {
+  message("Hello Bambi");
+  setTimeout(()=>{message("Can Bambi click all the lovely girly crosses?");},3000);
+  
+}
 
 //==============================================
 //==============================================
@@ -54,6 +60,10 @@ function draw() {
   b=map(cos(frameCount/20),-1,1,1,1.5);
   spiral(a,1,[199, 0, 199]);
   spiral(b,0.3,[255, 130, 255]);
+  text("x",-100,-100);
+  text("x",-100,100);
+  text("x",100,-100);
+  text("x",100,100);
 }
 
 function spiral(a,x,d) {
