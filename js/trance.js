@@ -67,6 +67,12 @@ function draw() {
   spiral(b,0.3,[255, 130, 255]);
 }
 
+function mouseClicked() {
+ if(true){
+   
+ }
+}
+
 function spiral(a,x,d) {
   fill(d[0],d[1],d[2]); stroke(d[0],d[1],d[2]);
   var r1 = 0,r2 = 1, step=a,spiralwidth=10.0,dw=spiralwidth/250;
