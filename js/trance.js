@@ -84,7 +84,7 @@ function message(msg) {
     zz = document.createElement("div");
     zz.className = "message";
     zz.innerHTML = msg;
-    document.querySelector("#message").appendChild(zz);
+    document.querySelector("#messages").appendChild(zz);
     
     setTimeout(function (that) {
         var div = that;
