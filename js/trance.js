@@ -49,7 +49,8 @@ function startSession() {
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight-document.querySelector("#navbar").clientHeight*1.6);
-
+  textSize(50);
+  textAlign(CENTER);
 }
 
 function draw() {
