@@ -42,7 +42,7 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
 // SPIRAL CODE!!
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(window.innerWidth, window.innerHeight);
 
 }
 
