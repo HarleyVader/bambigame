@@ -22,6 +22,17 @@
     pointer-events: none;
 }
 
+.message {
+    color: rgb(255, 130, 255);
+    transition: opacity 0.6s; 
+    opacity: 1; 
+    user-select: none;
+    position: absolute;
+    transform: -50% ;
+    top: 50%;
+    left: 50%;
+}
+
 #alertBoxs {
     z-index: 99 !important;
     position: absolute;
