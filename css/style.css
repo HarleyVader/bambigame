@@ -28,9 +28,10 @@
     opacity: 1; 
     user-select: none;
     position: absolute;
-    transform: -50% ;
-    top: 50%;
+    transform: translate(-50%, -50%);
+    top: 25%;
     left: 50%;
+    font-size: 50px;
 }
 
 #alertBoxs {
