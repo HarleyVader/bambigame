@@ -36,6 +36,49 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
 //TODO: calibration, use webgazer.pause and webgazer.resume to stop and start user interaction data collection
 
 
+
+//==============================================
+//==============================================
+// SPIRAL CODE!!
+
+function setup() {
+  createCanvas(500, 500);
+
+}
+
+function draw() {
+  background(0,0,0);
+  translate(width/2,height/2);
+  rotate(frameCount/10);
+  a=map(sin(frameCount/20),-1,1,0.5,1.5);
+  b=map(cos(frameCount/20),-1,1,1,1.5);
+  spiral(a,1,[199, 0, 199]);
+  spiral(b,0.3,[255, 130, 255]);
+}
+
+function spiral(a,x,d) {
+  fill(d[0],d[1],d[2]); stroke(d[0],d[1],d[2]);
+  var r1 = 0,r2 = 1, step=a,spiralwidth=10.0,dw=spiralwidth/250;
+  beginShape(TRIANGLE_STRIP);
+  for ( var i = 0 ; i < 250 ; i++ ){
+    r1 += step;
+    spiralwidth -= dw;
+    r2 = r1 + spiralwidth;
+    var ang = x;
+    var r1x = r1*sin(ang*i);
+    var r1y = r1*cos(ang*i);
+    var r2x = r2*sin(ang*i);
+    var r2y = r2*cos(ang*i);
+    vertex(r1x,r1y);
+    vertex(r2x,r2y);
+     }
+  endShape();
+}
+//==============================================
+//==============================================
+
+
+
 //UTILITIES
 function alertBox(msg) {
     zz = document.createElement("div");
