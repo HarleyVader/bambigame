@@ -55,15 +55,15 @@ function setup() {
 function draw() {
   background(0,0,0);
   translate(width/2,height/2);
+  text("x",-200,-200);
+  text("x",-200,200);
+  text("x",200,-200);
+  text("x",200,200);
   rotate(frameCount/10);
   a=map(sin(frameCount/20),-1,1,0.5,1.5);
   b=map(cos(frameCount/20),-1,1,1,1.5);
   spiral(a,1,[199, 0, 199]);
   spiral(b,0.3,[255, 130, 255]);
-  text("x",-100,-100);
-  text("x",-100,100);
-  text("x",100,-100);
-  text("x",100,100);
 }
 
 function spiral(a,x,d) {
