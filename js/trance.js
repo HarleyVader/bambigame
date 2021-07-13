@@ -80,6 +80,21 @@ function spiral(a,x,d) {
 
 
 //UTILITIES
+function message(msg) {
+    zz = document.createElement("div");
+    zz.className = "message";
+    zz.innerHTML = msg;
+    document.querySelector("#message").appendChild(zz);
+    
+    setTimeout(function (that) {
+        var div = that;
+        div.style.opacity = "0";
+        setTimeout(function () {
+            div.style.display = "none";
+        }, 1000);
+    }, 3000, zz);
+}
+
 function alertBox(msg) {
     zz = document.createElement("div");
     zz.className = "alert";
@@ -93,7 +108,8 @@ function alertBox(msg) {
             div.style.display = "none";
         }, 600);
     }
-    setTimeout(function (that) {
+    
+  setTimeout(function (that) {
         var div = that;
         div.style.opacity = "0";
         setTimeout(function () {
