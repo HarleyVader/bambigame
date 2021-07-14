@@ -1,7 +1,18 @@
 let eyeCursor = document.querySelector("#eyeCursor");
 
+let clicks = [false,false,false,false];
+let centerCalibrate = [];
+
+let snap = new Audio("/audio/snap.mp3");
+let bs = new Audio("/audio/bs.mp3");
+let drone = new Audio("/audio/drone.mp3");
+drone.loop = true;
+
 let avgPoints = [];
 let first = true;
+
+let xPred=0;
+let yPred=0;
  
 webgazer.showVideo(false);
 webgazer.showPredictionPoints(false)
@@ -27,8 +38,8 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
     for(let j=0;j<avgPoints.length;j++){
       sumY+=avgPoints[j][1];
     }
-    let xPred = (sumX / avgPoints.length);
-    let yPred = (sumY / avgPoints.length);
+    xPred = (sumX / avgPoints.length);
+    yPred = (sumY / avgPoints.length);
     eyeCursor.style.left = xPred+"px";
     eyeCursor.style.top = yPred+"px";
 //     console.log(xPred,yPred);
@@ -39,7 +50,7 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
 // Trance code
 function startSession() {
   message("Hello Bambi");
-  setTimeout(()=>{message("Can Bambi click all the lovely girly crosses?");},3000);
+  setTimeout(()=>{message("Can Bambi click all the lovely girly crosses while looking at them?");},3000);
   
 }
 
@@ -60,27 +71,61 @@ function draw() {
   text("x",-200,200);
   text("x",200,-200);
   text("x",200,200);
-  rotate(frameCount/10);
   a=map(sin(frameCount/20),-1,1,0.5,1.5);
   b=map(cos(frameCount/20),-1,1,1,1.5);
+  rotate(frameCount/10);
   spiral(a,1,[199, 0, 199]);
+  rotate(-frameCount/10);
   spiral(b,0.3,[255, 130, 255]);
 }
 
 function mouseClicked() {
-  console.log(dist(mouseX,mouseY,(width/2)+200,(height/2)+200));
-  if(dist(mouseX,mouseY,(width/2)-200,(height/2)-200)<20){
+//   console.log(dist(mouseX,mouseY,(width/2)+200,(height/2)+200));
+  if(dist(mouseX,mouseY,(width/2)-200,(height/2)-200)<20&&!clicks[0]){
     message("Good Girl!");
+    snap.play();
+    clicks[0]=true;
   }
-  if(dist(mouseX,mouseY,(width/2)-200,(height/2)+200)<20){
+  if(dist(mouseX,mouseY,(width/2)-200,(height/2)+200)<20&&!clicks[1]){
     message("Good Girl!");
+    snap.play();
+    clicks[1]=true;
   }
-  if(dist(mouseX,mouseY,(width/2)+200,(height/2)-200)<20){
+  if(dist(mouseX,mouseY,(width/2)+200,(height/2)-200)<20&&!clicks[2]){
     message("Good Girl!");
+    snap.play();
+    clicks[2]=true;
   }
-  if(dist(mouseX,mouseY,(width/2)+200,(height/2)+200)<20){
+  if(dist(mouseX,mouseY,(width/2)+200,(height/2)+200)<20&&!clicks[3]){
     message("Good Girl!");
+    snap.play();
+    clicks[3]=true;
   }
+  if(clicks[0]&&clicks[1]&&clicks[2]&&clicks[3]){
+    message("Good Girl!");
+    snap.play();
+    setTimeout(calibrated, 3000);
+  }
+}
+
+function calibrated() {
+  message("Now Bambi, I want you to click the center of the spiral and stare while I calibrate your trance level");
+  tranceCalibrateLoop = setInterval(()=>{
+    centerCalibrate.push([xPred,yPred]);
+  },10);
+  setTimeout(()=>{
+    clearInterval(tranceCalibrateLoop);
+    message("Good Girl!");
+    snap.play();
+    setTimeout(()=>{
+      message("Now I want you to relax and...");
+      setTimeout(()=>{
+        message("Bambi Sleep");
+        bs.play();
+        drone.play();
+      },3000);
+    },3000);
+  },5000);
 }
 
 function spiral(a,x,d) {
