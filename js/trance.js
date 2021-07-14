@@ -123,6 +123,7 @@ function calibrated() {
       setTimeout(()=>{
         message("Bambi Sleep");
         bs.play();
+        snap.play();
         drone.play();
       },5000);
     },5000);
