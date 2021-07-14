@@ -117,7 +117,7 @@ function mouseClicked() {
 function calibrated() {
   message("Now Bambi, I want you to click the center of the spiral and stare while I calibrate your trance level");
   tranceCalibrateLoop = setInterval(()=>{
-    centerCalibrate.push([xPred,yPred]);
+    centerCalibrate.push([xdPred,ydPred]);
   },10);
   setTimeout(()=>{
     clearInterval(tranceCalibrateLoop);
