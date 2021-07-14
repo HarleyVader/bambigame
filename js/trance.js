@@ -2,6 +2,7 @@ let eyeCursor = document.querySelector("#eyeCursor");
 
 let clicks = [false,false,false,false];
 let centerCalibrate = [];
+let trancePoint = [0,0];
 let s = true;
 
 let snap = new Audio("/audio/snap.wav"); 
@@ -77,6 +78,8 @@ function draw() {
   rotate(frameCount/10);
   spiral(a,1,[199, 0, 199]);
   spiral(b,0.3,[255, 130, 255]);
+  calibrationComplete();
+  circle(trancePoint[0],trancePoint[1],40);
 }
 
 function mouseClicked() {
@@ -125,9 +128,25 @@ function calibrated() {
         bs.play();
         snap.play();
         drone.play();
+        let pX = 0;
+        for(let i=0;i<centerCalibrate.length;i++){
+          pX+=centerCalibrate[i][0];
+        }
+        let pY = 0;
+        for(let j=0;j<centerCalibrate.length;j++){
+          pY+=centerCalibrate[j][1];
+        }
+        trancePoint[0] = (pY / centerCalibrate.length);
+        trancePoint[1] = (pY / centerCalibrate.length);
+        calibrationComplete();
       },5000);
     },5000);
   },10000);
+}
+
+function calibrationComplete() {
+    webgazer.pause();
+    tranceAmt = dist(xPred,yPred,trancePoint[0],trancePoint[1]);
 }
 
 function spiral(a,x,d) {
