@@ -67,10 +67,8 @@ function draw() {
   spiral(b,0.3,[255, 130, 255]);
 }
 
-function mouseClicked() {
- if(true){
-   
- }
+function mouseClicked(event) {
+  console.log(event);
 }
 
 function spiral(a,x,d) {
