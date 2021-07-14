@@ -13,8 +13,8 @@ drone.loop = true;
 let avgPoints = [];
 let first = true;
 
-let xPred=0;
-let yPred=0;
+let xdPred=0;
+let ydPred=0;
 webgazer.clearData();
 webgazer.showVideo(false);
 webgazer.showPredictionPoints(false)
@@ -40,8 +40,10 @@ webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow funct
     for(let j=0;j<avgPoints.length;j++){
       sumY+=avgPoints[j][1];
     }
-    xPred = (sumX / avgPoints.length);
-    yPred = (sumY / avgPoints.length);
+    let xPred = (sumX / avgPoints.length);
+    let yPred = (sumY / avgPoints.length);
+    xdPred = xPred;
+    ydPred = yPred;
     eyeCursor.style.left = xPred+"px";
     eyeCursor.style.top = yPred+"px";
 //     console.log(xPred,yPred);
@@ -146,7 +148,7 @@ function calibrated() {
 
 function calibrationComplete() {
     webgazer.pause();
-    tranceAmt = dist(xPred,yPred,trancePoint[0],trancePoint[1]);
+    tranceAmt = dist(xdPred,ydPred,trancePoint[0],trancePoint[1]);
 }
 
 function spiral(a,x,d) {
