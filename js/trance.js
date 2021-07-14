@@ -67,8 +67,20 @@ function draw() {
   spiral(b,0.3,[255, 130, 255]);
 }
 
-function mouseClicked(event) {
-  console.log(event);
+function mouseClicked() {
+  console.log(dist(mouseX,mouseY,(width/2)+200,(height/2)+200));
+  if(dist(mouseX,mouseY,(width/2)-200,(height/2)-200)<20){
+    message("Good Girl!");
+  }
+  if(dist(mouseX,mouseY,(width/2)-200,(height/2)+200)<20){
+    message("Good Girl!");
+  }
+  if(dist(mouseX,mouseY,(width/2)+200,(height/2)-200)<20){
+    message("Good Girl!");
+  }
+  if(dist(mouseX,mouseY,(width/2)+200,(height/2)+200)<20){
+    message("Good Girl!");
+  }
 }
 
 function spiral(a,x,d) {
