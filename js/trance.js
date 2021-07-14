@@ -4,7 +4,7 @@ let clicks = [false,false,false,false];
 let centerCalibrate = [];
 let s = true;
 
-let snap = new Audio("/audio/snap.wav");
+let snap = new Audio("/audio/snap.wav"); 
 let bs = new Audio("/audio/bs.mp3");
 let drone = new Audio("/audio/drone.mp3");
 drone.loop = true;
