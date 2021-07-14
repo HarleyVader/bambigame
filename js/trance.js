@@ -21,6 +21,7 @@ webgazer.showPredictionPoints(false)
 webgazer.setRegression("weightedRidge"); //Prioritizes new user interactions!
 webgazer.applyKalmanFilter(true); // Apply a kalman filter to better track eyes 
 webgazer.setGazeListener((data, elapsedTime) => {//made this into an arrow function
+    console.log("Test");
     if(first){
       first = false;
       alertBox("Model Loaded! Click To Start");
