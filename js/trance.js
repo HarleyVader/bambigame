@@ -2,6 +2,7 @@ let eyeCursor = document.querySelector("#eyeCursor");
 
 let clicks = [false,false,false,false];
 let centerCalibrate = [];
+let s = true;
 
 let snap = new Audio("/audio/snap.wav");
 let bs = new Audio("/audio/bs.mp3");
@@ -13,7 +14,7 @@ let first = true;
 
 let xPred=0;
 let yPred=0;
- 
+webgazer.clearData();
 webgazer.showVideo(false);
 webgazer.showPredictionPoints(false)
 webgazer.setRegression("weightedRidge"); //Prioritizes new user interactions!
@@ -75,7 +76,6 @@ function draw() {
   b=map(cos(frameCount/20),-1,1,1,1.5);
   rotate(frameCount/10);
   spiral(a,1,[199, 0, 199]);
-  rotate(-frameCount/10);
   spiral(b,0.3,[255, 130, 255]);
 }
 
@@ -101,10 +101,11 @@ function mouseClicked() {
     snap.play();
     clicks[3]=true;
   }
-  if(clicks[0]&&clicks[1]&&clicks[2]&&clicks[3]){
+  if(clicks[0]&&clicks[1]&&clicks[2]&&clicks[3]&&s){
     message("Good Girl!");
     snap.play();
-    setTimeout(calibrated, 3000);
+    setTimeout(calibrated, 5000);
+   s=false;
   }
 }
 
@@ -123,9 +124,9 @@ function calibrated() {
         message("Bambi Sleep");
         bs.play();
         drone.play();
-      },3000);
-    },3000);
-  },5000);
+      },5000);
+    },5000);
+  },10000);
 }
 
 function spiral(a,x,d) {
